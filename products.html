@@ -1,0 +1,138 @@
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Products</title>
+
+    <style>
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: Arial, sans-serif;
+            background: #f5f7fb;
+        }
+
+        header {
+            background: #222;
+            padding: 20px;
+            text-align: center;
+        }
+
+        header a {
+            color: white;
+            text-decoration: none;
+            margin: 0 20px;
+        }
+
+        .content {
+            padding: 80px 20px;
+            text-align: center;
+        }
+
+        h1 {
+            font-size: 45px;
+            color: #7b2ff7;
+            margin-bottom: 40px;
+        }
+
+        .products {
+            display: flex;
+            justify-content: center;
+            gap: 25px;
+            flex-wrap: wrap;
+        }
+
+        .product {
+            width: 250px;
+            background: white;
+            padding: 30px;
+            border-radius: 15px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+            transition: 0.3s;
+        }
+
+        .product:hover {
+            transform: translateY(-10px) scale(1.03);
+        }
+
+        .product h2 {
+            margin-bottom: 15px;
+            color: #7b2ff7;
+        }
+
+        .product p {
+            color: #666;
+        }
+
+    </style>
+
+</head>
+
+<body>
+
+    <header>
+
+        <a href="index.html">Home</a>
+        <a href="about.html">About</a>
+        <a href="services.html">Services</a>
+        <a href="products.html">Products</a>
+        <a href="contact.html">Contact</a>
+
+    </header>
+
+
+    <section class="content">
+
+        <h1>Our Products</h1>
+
+        <div class="products">
+
+            <div class="product">
+
+                <h2>Product 1</h2>
+
+                <p>
+                    Premium quality product.
+                </p>
+
+            </div>
+
+
+            <div class="product">
+
+                <h2>Product 2</h2>
+
+                <p>
+                    Beautiful and modern product.
+                </p>
+
+            </div>
+
+
+            <div class="product">
+
+                <h2>Product 3</h2>
+
+                <p>
+                    Latest collection.
+                </p>
+
+            </div>
+
+        </div>
+
+    </section>
+
+</body>
+</html>
+
