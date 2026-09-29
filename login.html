@@ -1,16 +1,12 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
-
     <meta charset="UTF-8">
-
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
     <title>Login</title>
-
     <style>
 
+        /* ---------- RESET ---------- */
         * {
             margin: 0;
             padding: 0;
@@ -18,265 +14,297 @@
         }
 
         body {
-            min-height: 100vh;
-
-            display: flex;
-            justify-content: center;
-            align-items: center;
-
             font-family: Arial, Helvetica, sans-serif;
-
-            background:
-                linear-gradient(
-                    135deg,
-                    #7b2ff7,
-                    #f107a3
-                );
+            background: #f5f7fb;
         }
 
-
-        /* LOGIN CONTAINER */
-
-        .login-container {
-
-            width: 400px;
-
-            padding: 40px;
-
-            background: white;
-
-            border-radius: 20px;
-
-            box-shadow:
-                0 20px 50px
-                rgba(0, 0, 0, 0.25);
-
-        }
-
-
-        /* TITLE */
-
-        .login-container h1 {
-
-            text-align: center;
-
-            margin-bottom: 10px;
-
-            color: #333;
-
-        }
-
-        .login-container p {
-
-            text-align: center;
-
-            color: #777;
-
-            margin-bottom: 30px;
-
-        }
-
-
-        /* INPUT GROUP */
-
-        .input-group {
-
-            margin-bottom: 20px;
-
-        }
-
-        .input-group label {
-
-            display: block;
-
-            margin-bottom: 8px;
-
-            font-weight: bold;
-
-            color: #333;
-
-        }
-
-        .input-group input {
-
+        /* ---------- HEADER ---------- */
+        header {
             width: 100%;
-
-            padding: 13px 15px;
-
-            border: 1px solid #ddd;
-
-            border-radius: 10px;
-
-            outline: none;
-
-            font-size: 15px;
-
-            transition: 0.3s;
-
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(12px);
+            box-shadow: 0 5px 25px rgba(0, 0, 0, 0.08);
         }
 
-
-        /* INPUT HOVER / FOCUS */
-
-        .input-group input:focus {
-
-            border-color: #7b2ff7;
-
-            box-shadow:
-                0 0 8px
-                rgba(123, 47, 247, 0.2);
-
+        /* ---------- NAVBAR ---------- */
+        .navbar {
+            max-width: 1300px;
+            margin: auto;
+            height: 80px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 0 30px;
         }
 
-
-        /* LOGIN BUTTON */
-
-        .login-button {
-
-            width: 100%;
-
-            padding: 14px;
-
-            border: none;
-
-            border-radius: 30px;
-
-            color: white;
-
-            font-size: 16px;
-
-            font-weight: bold;
-
-            cursor: pointer;
-
-            background:
-                linear-gradient(
-                    135deg,
-                    #7b2ff7,
-                    #f107a3
-                );
-
-            transition: 0.3s;
-
-        }
-
-        .login-button:hover {
-
-            transform: translateY(-3px);
-
-            box-shadow:
-                0 10px 25px
-                rgba(123, 47, 247, 0.35);
-
-        }
-
-
-        /* BACK BUTTON */
-
-        .back {
-
-            display: block;
-
-            text-align: center;
-
-            margin-top: 20px;
-
-            color: #7b2ff7;
-
+        /* ---------- LOGO ---------- */
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 12px;
             text-decoration: none;
+        }
 
+        .logo img {
+            width: 55px;
+            height: 55px;
+            object-fit: contain;
+            border-radius: 50%;
+            transition: 0.4s ease;
+        }
+
+        .logo:hover img {
+            transform: rotate(8deg) scale(1.05);
+        }
+
+        .logo span {
+            font-size: 24px;
             font-weight: bold;
-
+            background: linear-gradient(90deg, #7b2ff7, #f107a3);
+            background-clip: text;
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
         }
 
-        .back:hover {
-
-            text-decoration: underline;
-
+        /* ---------- NAVIGATION ---------- */
+        .nav-links {
+            display: flex;
+            align-items: center;
+            gap: 35px;
+            list-style: none;
         }
 
+        .nav-links li {
+            position: relative;
+        }
 
-        /* RESPONSIVE */
+        .nav-links a {
+            position: relative;
+            display: inline-block;
+            text-decoration: none;
+            color: #222;
+            font-size: 16px;
+            font-weight: 600;
+            padding: 10px 0;
+            transition: 0.3s ease;
+        }
 
-        @media (max-width: 500px) {
+        /* ---------- NAV HOVER ---------- */
+        .nav-links a::after {
+            content: "";
+            position: absolute;
+            left: 0;
+            bottom: 0;
+            width: 0;
+            height: 3px;
+            border-radius: 10px;
+            background: linear-gradient(90deg, #7b2ff7, #f107a3);
+            transition: 0.3s ease;
+        }
 
-            .login-container {
+        .nav-links a:hover {
+            color: #7b2ff7;
+        }
 
-                width: 90%;
+        .nav-links a:hover::after {
+            width: 100%;
+        }
 
-                padding: 30px;
+        /* ---------- DROPDOWN ---------- */
+        .dropdown {
+            position: relative;
+        }
 
+        .dropdown-menu {
+            position: absolute;
+            top: 40px;
+            left: -20px;
+            width: 180px;
+            background: white;
+            border-radius: 12px;
+            padding: 10px 0;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
+            opacity: 0;
+            visibility: hidden;
+            transform: translateY(10px);
+            transition: 0.3s ease;
+        }
+
+        .dropdown-menu a {
+            display: block;
+            padding: 12px 20px;
+            color: #333;
+        }
+
+        .dropdown-menu a::after {
+            display: none;
+        }
+
+        .dropdown-menu a:hover {
+            background: #f5efff;
+        }
+
+        .dropdown:hover .dropdown-menu {
+            opacity: 1;
+            visibility: visible;
+            transform: translateY(0);
+        }
+
+        /* ---------- BUTTONS ---------- */
+        .nav-buttons {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .btn {
+            text-decoration: none;
+            padding: 12px 22px;
+            border-radius: 30px;
+            font-size: 14px;
+            font-weight: bold;
+            transition: 0.3s ease;
+        }
+
+        .login-btn {
+            color: #7b2ff7;
+            border: 2px solid #7b2ff7;
+        }
+
+        .login-btn:hover {
+            color: white;
+            background: #7b2ff7;
+            transform: translateY(-3px);
+            box-shadow: 0 8px 20px rgba(123, 47, 247, 0.3);
+        }
+
+        .start-btn {
+            color: white;
+            background: linear-gradient(135deg, #7b2ff7, #f107a3);
+            border: 2px solid transparent;
+        }
+
+        .start-btn:hover {
+            color: white;
+            transform: translateY(-3px) scale(1.05);
+            box-shadow: 0 10px 25px rgba(241, 7, 163, 0.35);
+        }
+
+        /* ---------- RESPONSIVE NAVIGATION ---------- */
+        @media (max-width: 1000px) {
+            .navbar {
+                height: auto;
+                min-height: 80px;
+                flex-wrap: wrap;
+                gap: 15px;
+                padding: 15px 20px;
             }
 
+            .nav-links {
+                order: 3;
+                width: 100%;
+                justify-content: center;
+                flex-wrap: wrap;
+                gap: 20px;
+            }
         }
 
+        @media (max-width: 600px) {
+            .logo span {
+                font-size: 20px;
+            }
+
+            .logo img {
+                width: 48px;
+                height: 48px;
+            }
+
+            .nav-buttons {
+                gap: 7px;
+            }
+
+            .btn {
+                padding: 10px 14px;
+                font-size: 12px;
+            }
+
+            .nav-links {
+                gap: 14px;
+            }
+
+            .nav-links a {
+                font-size: 14px;
+            }
+        }
+
+        /* ---------- LOGIN PAGE ---------- */
+        body { min-height: 100vh; }
+        .login-page { min-height: calc(100vh - 80px); display: flex; justify-content: center; align-items: center; padding: 50px 20px; background: linear-gradient(135deg, #f5f7fb, #faf4ff); }
+        .login-container { width: 400px; padding: 40px; background: white; border-radius: 20px; box-shadow: 0 20px 50px rgba(0,0,0,0.15); }
+        .login-container h1 { text-align: center; margin-bottom: 10px; color: #333; }
+        .login-container p { text-align: center; color: #777; margin-bottom: 30px; }
+        .input-group { margin-bottom: 20px; }
+        .input-group label { display: block; margin-bottom: 8px; font-weight: bold; color: #333; }
+        .input-group input { width: 100%; padding: 13px 15px; border: 1px solid #ddd; border-radius: 10px; outline: none; font-size: 15px; transition: 0.3s; }
+        .input-group input:focus { border-color: #7b2ff7; box-shadow: 0 0 8px rgba(123,47,247,0.2); }
+        .login-button { width: 100%; padding: 14px; border: none; border-radius: 30px; color: white; font-size: 16px; font-weight: bold; cursor: pointer; background: linear-gradient(135deg,#7b2ff7,#f107a3); transition: 0.3s; }
+        .login-button:hover { transform: translateY(-3px); box-shadow: 0 10px 25px rgba(123,47,247,0.35); }
+        .back { display: block; text-align: center; margin-top: 20px; color: #7b2ff7; text-decoration: none; font-weight: bold; }
+        .back:hover { text-decoration: underline; }
+        @media (max-width: 500px) { .login-container { width: 100%; padding: 30px; } }
     </style>
-
 </head>
-
-
 <body>
 
+    <header>
+        <nav class="navbar">
+            <a href="index.html" class="logo">
+                <img src="IMG_0104.PNG" alt="Website Logo">
+                <span>MyWebsite</span>
+            </a>
 
-    <div class="login-container">
+            <ul class="nav-links">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="about.html">About</a></li>
+                <li><a href="services.html">Services</a></li>
+                <li class="dropdown">
+                    <a href="products.html">Products ▾</a>
+                    <div class="dropdown-menu">
+                        <a href="products.html">All Products</a>
+                        <a href="products.html">New Arrivals</a>
+                        <a href="products.html">Popular Products</a>
+                    </div>
+                </li>
+                <li><a href="contact.html">Contact</a></li>
+            </ul>
 
-        <h1>Welcome Back!</h1>
-
-        <p>Login to continue</p>
-
-
-        <form action="index.html">
-
-            <div class="input-group">
-
-                <label for="email">
-                    Email
-                </label>
-
-                <input
-                    type="email"
-                    id="email"
-                    placeholder="Enter your email"
-                    required
-                >
-
+            <div class="nav-buttons">
+                <a href="login.html" class="btn login-btn">Login</a>
+                <a href="login.html" class="btn start-btn">Get Started</a>
             </div>
+        </nav>
+    </header>
 
-
-            <div class="input-group">
-
-                <label for="password">
-                    Password
-                </label>
-
-                <input
-                    type="password"
-                    id="password"
-                    placeholder="Enter your password"
-                    required
-                >
-
-            </div>
-
-
-            <button
-                type="submit"
-                class="login-button">
-
-                Login
-
-            </button>
-
-        </form>
-
-
-        <a href="index.html" class="back">
-            ← Back to Home
-        </a>
-
-    </div>
-
-
+    <main class="login-page">
+        <div class="login-container">
+            <h1>Welcome Back!</h1>
+            <p>Login to continue</p>
+            <form action="index.html">
+                <div class="input-group">
+                    <label for="email">Email</label>
+                    <input type="email" id="email" placeholder="Enter your email" required>
+                </div>
+                <div class="input-group">
+                    <label for="password">Password</label>
+                    <input type="password" id="password" placeholder="Enter your password" required>
+                </div>
+                <button type="submit" class="login-button">Login</button>
+            </form>
+            <a href="index.html" class="back">← Back to Home</a>
+        </div>
+    </main>
 </body>
-
 </html>
