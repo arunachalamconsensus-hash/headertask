@@ -1,16 +1,12 @@
-
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
-
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
     <title>Services</title>
-
     <style>
 
+        /* ---------- RESET ---------- */
         * {
             margin: 0;
             padding: 0;
@@ -18,125 +14,301 @@
         }
 
         body {
-            font-family: Arial, sans-serif;
+            font-family: Arial, Helvetica, sans-serif;
             background: #f5f7fb;
         }
+        .nav-links a.active {
+            color: #7b2ff7;
+        }
 
+        .nav-links a.active::after {
+            width: 100%;
+        }
+
+        /* ---------- HEADER ---------- */
         header {
-            background: #222;
-            padding: 20px;
-            text-align: center;
+            width: 100%;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(12px);
+            box-shadow: 0 5px 25px rgba(0, 0, 0, 0.08);
         }
 
-        header a {
-            color: white;
-            text-decoration: none;
-            margin: 0 20px;
-        }
-
-        .content {
-            padding: 80px 20px;
-            text-align: center;
-        }
-
-        h1 {
-            font-size: 45px;
-            color: #7b2ff7;
-            margin-bottom: 40px;
-        }
-
-        .services {
+        /* ---------- NAVBAR ---------- */
+        .navbar {
+            max-width: 1300px;
+            margin: auto;
+            height: 80px;
             display: flex;
-            justify-content: center;
-            gap: 25px;
-            flex-wrap: wrap;
+            align-items: center;
+            justify-content: space-between;
+            padding: 0 30px;
         }
 
-        .card {
-            width: 250px;
-            padding: 30px;
-            background: white;
-            border-radius: 15px;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
-            transition: 0.3s;
+        /* ---------- LOGO ---------- */
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            text-decoration: none;
         }
 
-        .card:hover {
-            transform: translateY(-10px);
+        .logo img {
+            width: 55px;
+            height: 55px;
+            object-fit: contain;
+            border-radius: 50%;
+            transition: 0.4s ease;
         }
 
-        .card h2 {
+        .logo:hover img {
+            transform: rotate(8deg) scale(1.05);
+        }
+
+        .logo span {
+            font-size: 24px;
+            font-weight: bold;
+            background: linear-gradient(90deg, #7b2ff7, #f107a3);
+            background-clip: text;
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        /* ---------- NAVIGATION ---------- */
+        .nav-links {
+            display: flex;
+            align-items: center;
+            gap: 35px;
+            list-style: none;
+        }
+
+        .nav-links li {
+            position: relative;
+        }
+
+        .nav-links a {
+            position: relative;
+            display: inline-block;
+            text-decoration: none;
+            color: #222;
+            font-size: 16px;
+            font-weight: 600;
+            padding: 10px 0;
+            transition: 0.3s ease;
+        }
+
+        /* ---------- NAV HOVER ---------- */
+        .nav-links a::after {
+            content: "";
+            position: absolute;
+            left: 0;
+            bottom: 0;
+            width: 0;
+            height: 3px;
+            border-radius: 10px;
+            background: linear-gradient(90deg, #7b2ff7, #f107a3);
+            transition: 0.3s ease;
+        }
+
+        .nav-links a:hover {
             color: #7b2ff7;
-            margin-bottom: 15px;
         }
 
-        .card p {
-            color: #666;
-            line-height: 1.6;
+        .nav-links a:hover::after {
+            width: 100%;
         }
+
+        /* ---------- DROPDOWN ---------- */
+        .dropdown {
+            position: relative;
+        }
+
+        .dropdown-menu {
+            position: absolute;
+            top: 40px;
+            left: -20px;
+            width: 180px;
+            background: white;
+            border-radius: 12px;
+            padding: 10px 0;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
+            opacity: 0;
+            visibility: hidden;
+            transform: translateY(10px);
+            transition: 0.3s ease;
+        }
+
+        .dropdown-menu a {
+            display: block;
+            padding: 12px 20px;
+            color: #333;
+        }
+
+        .dropdown-menu a::after {
+            display: none;
+        }
+
+        .dropdown-menu a:hover {
+            background: #f5efff;
+        }
+
+        .dropdown:hover .dropdown-menu {
+            opacity: 1;
+            visibility: visible;
+            transform: translateY(0);
+        }
+
+        /* ---------- BUTTONS ---------- */
+        .nav-buttons {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .btn {
+            text-decoration: none;
+            padding: 12px 22px;
+            border-radius: 30px;
+            font-size: 14px;
+            font-weight: bold;
+            transition: 0.3s ease;
+        }
+
+        .login-btn {
+            color: #7b2ff7;
+            border: 2px solid #7b2ff7;
+        }
+
+        .login-btn:hover {
+            color: white;
+            background: #7b2ff7;
+            transform: translateY(-3px);
+            box-shadow: 0 8px 20px rgba(123, 47, 247, 0.3);
+        }
+
+        .start-btn {
+            color: white;
+            background: linear-gradient(135deg, #7b2ff7, #f107a3);
+            border: 2px solid transparent;
+        }
+
+        .start-btn:hover {
+            color: white;
+            transform: translateY(-3px) scale(1.05);
+            box-shadow: 0 10px 25px rgba(241, 7, 163, 0.35);
+        }
+
+        /* ---------- RESPONSIVE NAVIGATION ---------- */
+        @media (max-width: 1000px) {
+            .navbar {
+                height: auto;
+                min-height: 80px;
+                flex-wrap: wrap;
+                gap: 15px;
+                padding: 15px 20px;
+            }
+
+            .nav-links {
+                order: 3;
+                width: 100%;
+                justify-content: center;
+                flex-wrap: wrap;
+                gap: 20px;
+            }
+        }
+
+        @media (max-width: 600px) {
+            .logo span {
+                font-size: 20px;
+            }
+
+            .logo img {
+                width: 48px;
+                height: 48px;
+            }
+
+            .nav-buttons {
+                gap: 7px;
+            }
+
+            .btn {
+                padding: 10px 14px;
+                font-size: 12px;
+            }
+
+            .nav-links {
+                gap: 14px;
+            }
+
+            .nav-links a {
+                font-size: 14px;
+            }
+        }
+
+        /* ---------- PAGE CONTENT ---------- */
+
+        .content { padding: 80px 20px; text-align: center; }
+        h1 { font-size: 45px; color: #7b2ff7; margin-bottom: 40px; }
+        .services { display: flex; justify-content: center; gap: 25px; flex-wrap: wrap; }
+        .card { width: 250px; padding: 30px; background: white; border-radius: 15px; box-shadow: 0 10px 30px rgba(0,0,0,0.1); transition: 0.3s; }
+        .card:hover { transform: translateY(-10px); }
+        .card h2 { color: #7b2ff7; margin-bottom: 15px; }
+        .card p { color: #666; line-height: 1.6; }
+        @media (max-width: 600px) { h1 { font-size: 36px; } }
 
     </style>
-
 </head>
-
 <body>
 
     <header>
+        <nav class="navbar">
+            <a href="index.html" class="logo">
+                <img src="IMG_0104.PNG" alt="Website Logo">
+                <span>MyWebsite</span>
+            </a>
 
-        <a href="index.html">Home</a>
-        <a href="about.html">About</a>
-        <a href="services.html">Services</a>
-        <a href="products.html">Products</a>
-        <a href="contact.html">Contact</a>
+            <ul class="nav-links">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="about.html">About</a></li>
+                <li><a href="services.html" class="active">Services</a></li>
+                <li class="dropdown">
+                    <a href="products.html">Products ▾</a>
+                    <div class="dropdown-menu">
+                        <a href="products.html">All Products</a>
+                        <a href="products.html">New Arrivals</a>
+                        <a href="products.html">Popular Products</a>
+                    </div>
+                </li>
+                <li><a href="contact.html">Contact</a></li>
+            </ul>
 
+            <div class="nav-buttons">
+                <a href="login.html" class="btn login-btn">Login</a>
+                <a href="login.html" class="btn start-btn">Get Started</a>
+            </div>
+        </nav>
     </header>
 
 
     <section class="content">
-
         <h1>Our Services</h1>
-
         <div class="services">
-
             <div class="card">
-
                 <h2>Web Design</h2>
-
-                <p>
-                    Modern and responsive website
-                    design for all devices.
-                </p>
-
+                <p>Modern and responsive website design for all devices.</p>
             </div>
-
-
             <div class="card">
-
                 <h2>Development</h2>
-
-                <p>
-                    Building fast and interactive
-                    web applications.
-                </p>
-
+                <p>Building fast and interactive web applications.</p>
             </div>
-
-
             <div class="card">
-
                 <h2>Support</h2>
-
-                <p>
-                    Professional support and
-                    maintenance services.
-                </p>
-
+                <p>Professional support and maintenance services.</p>
             </div>
-
         </div>
-
     </section>
 
 </body>
 </html>
-
